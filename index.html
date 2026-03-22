@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #F7F5F0;
+      --ink:      #1C1B18;
+      --muted:    #7A7469;
+      --accent:   #8B6F47;
+      --rule:     #DDD9D0;
+      --max:      700px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    /* ── HEADER ── */
+    header {
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: 'Cormorant', serif;
+      font-weight: 300;
+      font-size: clamp(42px, 7vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -.01em;
+      margin-bottom: 28px;
+    }
+
+    .tagline {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+
+    nav {
+      margin-top: 48px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--ink); }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+    }
+
+    p { color: var(--muted); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-family: 'Cormorant', serif;
+      font-weight: 300;
+      font-size: clamp(20px, 3vw, 26px);
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .about-text em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { list-style: none; position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 1px;
+      background: var(--rule);
+    }
+
+    .timeline li {
+      padding-left: 32px;
+      padding-bottom: 52px;
+      position: relative;
+    }
+    .timeline li:last-child { padding-bottom: 0; }
+
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -3px; top: 8px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline-year {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .timeline-title {
+      font-family: 'Cormorant', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .timeline-role {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .timeline-note {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--rule);
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+
+    /* ── INSIGHTS ── */
+    .insights-grid { display: grid; gap: 40px; }
+
+    .insight-topic {
+      font-family: 'Cormorant', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .insight-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .placeholder-box {
+      border: 1px dashed var(--rule);
+      border-radius: 2px;
+      padding: 24px 28px;
+      color: var(--muted);
+      font-size: 14px;
+      font-style: italic;
+      opacity: .7;
+    }
+
+    /* ── NOTES ── */
+    .notes-list { list-style: none; display: grid; gap: 36px; }
+
+    .note-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 20px;
+    }
+
+    .note-date {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 3px;
+    }
+
+    .note-title {
+      font-family: 'Cormorant', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .note-body {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── CONTACT ── */
+    .contact-line {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .links { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .link-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer {
+      padding: 40px 0;
+      font-size: 12px;
+      color: var(--rule);
+      letter-spacing: .08em;
+    }
+
+    /* ── FADE ON SCROLL ── */
+    .fade {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 500px) {
+      .note-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <p class="eyebrow">Music · Culture · Ventures</p>
+    <h1>Your<br>Full Name</h1>
+    <p class="tagline">
+      Co-founder. Ecosystem builder. Two decades of live music,
+      festivals, and ventures across Istanbul, Berlin, and beyond.
+    </p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#milestones">Milestones</a>
+      <a href="#insights">Insights</a>
+      <a href="#notes">Notes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label fade">About</p>
+    <p class="about-text fade">
+      I've spent over two decades at the intersection of <em>live music, cultural production, and building companies</em>.
+      It started with collecting a bag at Istanbul Airport at 4 am for a visiting artist — and it hasn't slowed down since.
+    </p>
+    <br>
+    <p class="about-text fade">
+      What LinkedIn doesn't quite capture: most of what I've built didn't exist before I showed up.
+      Festivals, companies, labels, funds. Some thrived. Some were wound down with care.
+      All of them were worth doing.
+    </p>
+    <br>
+    <p class="about-text fade">
+      I'm based in Berlin. Through <em>3dots</em>, I work as a venture builder and ecosystem connector
+      in the creative and cultural industries — bringing together founders, resources, and financial instruments
+      for people solving real problems in culture.
+    </p>
+  </section>
+
+
+  <!-- MILESTONES -->
+  <section id="milestones">
+    <p class="section-label fade">Milestones</p>
+
+    <ul class="timeline">
+
+      <li class="fade">
+        <p class="timeline-year">1998</p>
+        <p class="timeline-title">Graduated — Bursa Anatolian High School</p>
+        <p class="timeline-note">
+          <!-- Add a personal line here if you'd like — what this time meant, what you were already drawn to. -->
+        </p>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">2003 – 2008</p>
+        <p class="timeline-title">The Istanbul Years — Freelance, Festivals & Formation</p>
+        <p class="timeline-role">Istanbul Events Scene · Various Roles</p>
+        <p class="timeline-note">
+          It started at 4 am at Istanbul Airport, collecting a bag for a visiting artist for the Istanbul Film Festival.
+          Over the next five years I took part in over 300 events across the city — as artist guide, production assistant,
+          coordinator, and in whatever role needed filling.
+        </p>
+        <p class="timeline-note">
+          The range was everything Istanbul had at the time: Istanbul Film Festival, Istanbul Jazz Festival,
+          Babylon, IF Istanbul, Akbank Jazz Festival, and music events across genres.
+          This period was less a job and more a complete education in how live culture actually works —
+          from the artist's perspective, the crew's, and the audience's.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Artist Relations</span>
+          <span class="tag">Production</span>
+          <span class="tag">300+ Events</span>
+        </div>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">2008 – 2010</p>
+        <p class="timeline-title">Charmenko / Charm Music</p>
+        <p class="timeline-role">Türkiye Projects Manager & Artist Booker</p>
+        <p class="timeline-note">
+          Moved from the production floor into booking — working across major and emerging acts
+          in Türkiye and Eastern European markets. This was where freelance became professional:
+          managing artist relationships, negotiations, and touring projects at regional scale.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Artist Booking</span>
+          <span class="tag">Türkiye & Eastern Europe</span>
+        </div>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">2009</p>
+        <p class="timeline-title">Left Istanbul University</p>
+        <p class="timeline-role">Business Management Program — after 6 years</p>
+        <p class="timeline-note">
+          Six years is a long time to stay somewhere you're not sure about.
+          Eventually left without completing the degree.
+          The real education had been happening in parallel — backstage, in production offices, and on tour.
+          <!-- Add your own honest reflection here if you'd like. -->
+        </p>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">2010 – 2014</p>
+        <p class="timeline-title">Pozitif Live</p>
+        <p class="timeline-role">Projects & Production · Shareholder (for a period)</p>
+        <p class="timeline-note">
+          Four years at one of Türkiye's defining live entertainment companies —
+          joining the projects and production department and becoming a shareholder for a period.
+          The work covered the full range of what Turkish live music looked like at its peak.
+        </p>
+        <p class="timeline-note">
+          Projects included Rock'n Coke, Cirque du Soleil's Saltimbanco and Alegria Turkish runs,
+          Efes Pilsen One Love Festival, Efes Pilsen Blues Festival, Akbank Jazz Festival,
+          and major one-off concerts — including U2's Istanbul show and Red Hot Chili Peppers' Istanbul show.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Rock'n Coke</span>
+          <span class="tag">Cirque du Soleil</span>
+          <span class="tag">U2 Istanbul</span>
+          <span class="tag">RHCP Istanbul</span>
+          <span class="tag">Akbank Jazz</span>
+        </div>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">~2012 – 2014</p>
+        <p class="timeline-title">Graduated — Istanbul Bilgi University</p>
+        <p class="timeline-role">Management of Performing Arts</p>
+        <p class="timeline-note">
+          The degree that actually fit. After years in the industry and six years at Istanbul University's
+          Business Management program, finding the right academic frame — late, but alongside real-world practice — mattered.
+          <!-- Add graduation year and any personal reflection here. -->
+        </p>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">2015</p>
+        <p class="timeline-title">Moved to Berlin</p>
+        <p class="timeline-note">
+          A deliberate shift. Berlin in 2015 was one of the world's most important cities for music,
+          independent culture, and the kind of creative economy I wanted to build in.
+          <!-- Add what drew you here — and what you found. -->
+        </p>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">2018 – 2021</p>
+        <p class="timeline-title">XJAZZ Berlin</p>
+        <p class="timeline-role">Co-Founder & Co-CEO · Still a Shareholder</p>
+        <p class="timeline-note">
+          Co-founded and co-ran XJAZZ out of Berlin, building it into an international festival format.
+          Editions ran in Türkiye, Belarus, and Sweden (the latter cancelled due to COVID),
+          alongside the main event in Germany.
+        </p>
+        <p class="timeline-note">
+          I remain a shareholder — with full support and love for what it stands for.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Festival</span>
+          <span class="tag">Jazz</span>
+          <span class="tag">Berlin</span>
+          <span class="tag">International</span>
+        </div>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">Since 2018</p>
+        <p class="timeline-title">3dots</p>
+        <p class="timeline-role">Co-Founder · Venture Builder · Ecosystem Builder</p>
+        <p class="timeline-note">
+          3dots is the long-running vehicle through which I've co-founded and supported multiple projects
+          at the intersection of culture, music, and entrepreneurship. What started as a project company
+          has evolved into an ecosystem builder — connecting founders, resources, and financial instruments
+          across the creative and cultural industries.
+        </p>
+        <p class="timeline-note">
+          Projects launched or co-founded through 3dots:
+        </p>
+        <p class="timeline-note">
+          <strong style="color:var(--ink);font-weight:400;">Bozcaada Jazz Festival</strong> — reaching its 10th edition in 2026.<br><br>
+          <strong style="color:var(--ink);font-weight:400;">XJAZZ Istanbul, Ankara, İzmir</strong> — regional expansions of the XJAZZ concept.<br><br>
+          <strong style="color:var(--ink);font-weight:400;">Bergama Theatre Festival</strong> — exited in 2025, with deep pride in what it became. Still a fan and a curator of the Akropol events in its closing chapter.<br><br>
+          <strong style="color:var(--ink);font-weight:400;">Space Goats (label)</strong> — launched and wound down. Couldn't find its footing.<br><br>
+          <strong style="color:var(--ink);font-weight:400;">Lycia Records</strong> — ongoing.<br><br>
+          <strong style="color:var(--ink);font-weight:400;">Kabak & Lin Records</strong> — formed from a merger with Lin Records; exited.<br><br>
+          <strong style="color:var(--ink);font-weight:400;">Erişilebilir Her Şey</strong> — an accessibility consultancy co-founded to help cultural operators adopt accessibility principles. Exited after formation due to structural changes. The idea was right.
+        </p>
+        <p class="timeline-note">
+          3dots currently runs accelerators and funds, acts as a venture builder,
+          and raises financial instruments for creative and cultural industry founders.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Bozcaada Jazz</span>
+          <span class="tag">XJAZZ Istanbul</span>
+          <span class="tag">Accelerator</span>
+          <span class="tag">Venture Building</span>
+        </div>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">2021 – 2024</p>
+        <p class="timeline-title">Deplike</p>
+        <p class="timeline-role">Co-Founder · Music Tech · London & Ankara</p>
+        <p class="timeline-note">
+          My first real step into tech — something I'd wanted for a long time.
+          Deplike is a music technology company. I came in as co-founder, raised seed investment,
+          and oversaw global partnerships. Left in 2024 to focus on what was building at 3dots.
+        </p>
+        <p class="timeline-note">
+          Crossing from cultural production into a tech startup was a significant shift.
+          <!-- Add your own reflection on what you learned, what surprised you, and what carried over. -->
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Music Tech</span>
+          <span class="tag">Seed Stage</span>
+          <span class="tag">Global Partnerships</span>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+
+  <!-- INSIGHTS -->
+  <section id="insights">
+    <p class="section-label fade">Insights</p>
+    <p class="fade" style="margin-bottom:40px;">
+      Things I've come to believe — on topics I've thought about for a long time.
+      More coming here: on the economics of independent culture, on what festival-building
+      teaches you about entrepreneurship, and on how the creative industries relate to
+      (and often misunderstand) venture capital.
+    </p>
+
+    <div class="insights-grid">
+      <div class="fade">
+        <div class="placeholder-box">
+          Coming soon — e.g. "What twenty years of live music taught me about building companies"
+        </div>
+      </div>
+      <div class="fade">
+        <div class="placeholder-box">
+          Coming soon — e.g. "Why most creative industry funding models are broken — and what could replace them"
+        </div>
+      </div>
+      <div class="fade">
+        <div class="placeholder-box">
+          Coming soon — e.g. "On exiting well: what I've learned from winding things down with care"
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- NOTES ON EVENTS -->
+  <section id="notes">
+    <p class="section-label fade">Notes on Events</p>
+    <p class="fade" style="margin-bottom:40px;">
+      Reflections on specific moments — industry shifts, things I witnessed firsthand,
+      or turning points worth recording properly.
+    </p>
+
+    <ul class="notes-list">
+
+      <li class="note-item fade">
+        <span class="note-date">2020–21</span>
+        <div class="note-content">
+          <p class="note-title">COVID and the Live Music Industry</p>
+          <p class="note-body">
+            <!-- Your perspective to write here — what the pandemic revealed about the structural
+            fragility of live events, what it accelerated, and what you saw firsthand at XJAZZ and 3dots during this period. -->
+            Coming — a note on what the pandemic exposed, and what it changed permanently.
+          </p>
+        </div>
+      </li>
+
+      <li class="note-item fade">
+        <span class="note-date">TBD</span>
+        <div class="note-content">
+          <p class="note-title">Your Note Title</p>
+          <p class="note-body">
+            Add a reflection on any moment worth recording — a shift in the industry,
+            something you witnessed change in real time, or a decision that looked
+            different in hindsight.
+          </p>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label fade">Contact</p>
+    <p class="contact-line fade">
+      If something here resonates — or if you're building something in culture and need a thinking partner — I'm glad to hear it.
+    </p>
+    <div class="links fade">
+      <a class="link-pill" href="mailto:you@yourdomain.com">Email</a>
+      <a class="link-pill" href="https://linkedin.com/in/yourhandle" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+
+  <footer>
+    © <span id="yr"></span> Your Name
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const fades = document.querySelectorAll('.fade');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fades.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
