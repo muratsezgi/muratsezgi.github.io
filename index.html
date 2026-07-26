@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Murat Sezgi</title>
+  <meta name="description" content="Murat Sezgi — policy, ecosystem building and innovative finance for the creative economy. Co-founder of 3dots. Berlin, Istanbul, Bozcaada." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -71,7 +73,7 @@
     .tagline {
       font-size: 17px;
       color: var(--muted);
-      max-width: 520px;
+      max-width: 540px;
       line-height: 1.8;
     }
 
@@ -91,7 +93,7 @@
       text-decoration: none;
       transition: color .2s;
     }
-    nav a:hover { color: var(--ink); }
+    nav a:hover, nav a:focus-visible { color: var(--ink); }
 
     /* ── SECTION LABEL ── */
     .section-label {
@@ -106,6 +108,51 @@
     p { color: var(--muted); margin-bottom: 16px; }
     p:last-child { margin-bottom: 0; }
 
+    a { color: inherit; }
+
+    strong { color: var(--ink); font-weight: 400; }
+
+    /* ── NOW ── */
+    .now-list { list-style: none; }
+
+    .now-list li {
+      padding: 0 0 36px 20px;
+      border-left: 1px solid var(--rule);
+      transition: border-color .25s;
+    }
+    .now-list li:last-child { padding-bottom: 0; }
+    .now-list li:hover { border-left-color: var(--accent); }
+
+    .now-status {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .now-title {
+      font-family: 'Cormorant', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .now-title a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color .2s;
+    }
+    .now-title a:hover, .now-title a:focus-visible { border-bottom-color: var(--accent); }
+
+    .now-note {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
     /* ── ABOUT ── */
     .about-text {
       font-family: 'Cormorant', serif;
@@ -118,6 +165,30 @@
       font-style: italic;
       color: var(--accent);
     }
+
+    .personal {
+      margin-top: 56px;
+      padding-top: 34px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .personal-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .personal p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 14px;
+    }
+    .personal p:last-child { margin-bottom: 0; }
 
     /* ── TIMELINE ── */
     .timeline { list-style: none; position: relative; }
@@ -177,23 +248,44 @@
       margin-bottom: 10px;
     }
     .timeline-note:last-child { margin-bottom: 0; }
+    .timeline-note em { font-style: italic; color: var(--ink); }
 
-    /* ── INSIGHTS ── */
-    .insight-body {
+    /* ── WRITING ── */
+    .writing-intro {
       font-size: 15px;
       color: var(--muted);
       line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 560px;
     }
 
-    /* ── PERSONAL / BLOG ── */
-    .placeholder-box {
-      border: 1px dashed var(--rule);
-      border-radius: 2px;
-      padding: 32px 28px;
+    .writing-list { list-style: none; }
+
+    .writing-list li { border-top: 1px solid var(--rule); }
+    .writing-list li:last-child { border-bottom: 1px solid var(--rule); }
+
+    .writing-link {
+      display: block;
+      padding: 22px 0;
+      text-decoration: none;
+      transition: padding-left .25s;
+    }
+    .writing-link:hover, .writing-link:focus-visible { padding-left: 10px; }
+
+    .writing-item { padding: 22px 0; }
+
+    .writing-name {
+      font-family: 'Cormorant', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .writing-desc {
+      font-size: 14px;
       color: var(--muted);
-      font-size: 15px;
-      font-style: italic;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     /* ── CONTACT ── */
@@ -221,12 +313,13 @@
       text-decoration: none;
       transition: border-color .2s, color .2s;
     }
-    .link-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .link-pill:hover, .link-pill:focus-visible { border-color: var(--accent); color: var(--accent); }
 
     footer {
       padding: 40px 0;
       font-size: 12px;
-      color: var(--rule);
+      color: var(--muted);
+      opacity: .6;
       letter-spacing: .08em;
     }
 
@@ -238,8 +331,18 @@
     }
     .fade.visible { opacity: 1; transform: none; }
 
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade { opacity: 1; transform: none; transition: none; }
+      .writing-link { transition: none; }
+    }
+
     @media (max-width: 500px) {
       nav { gap: 20px; }
+      section { padding: 60px 0; }
+      header { padding: 72px 0 60px; }
     }
   </style>
 </head>
@@ -249,20 +352,67 @@
 
   <!-- HEADER -->
   <header>
-    <p class="eyebrow">Culture · Ventures · Tech · Impact</p>
+    <p class="eyebrow">Policy &amp; Research · Ecosystem Building · Innovative Finance</p>
     <h1>Murat<br>Sezgi</h1>
     <p class="tagline">
-      Ecosystem & venture builder. Two decades of creating projects,
-      innovation and impact across culture, music, and technology.
+      I work on how culture gets funded — standards, funds, and the ecosystems
+      that hold them up. Two decades of building festivals, labels and companies behind that.
     </p>
     <nav>
+      <a href="#now">Now</a>
       <a href="#about">About</a>
       <a href="#milestones">Milestones</a>
-      <a href="#insights">Insights</a>
-      <a href="#personal">Personal</a>
+      <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
+
+
+  <!-- NOW -->
+  <section id="now">
+    <p class="section-label fade">What I'm working on</p>
+
+    <ul class="now-list">
+
+      <li class="fade">
+        <p class="now-status">Launched 2026</p>
+        <p class="now-title">
+          <a href="https://www.culturefinancestandard.com" target="_blank" rel="noopener">Culture Finance Standard</a>
+        </p>
+        <p class="now-note">
+          Climate has its standards. Social has its measurement. Cultural value is the largest
+          unmeasured category in sustainability finance — so we're building the third.
+        </p>
+      </li>
+
+      <li class="fade">
+        <p class="now-status">Funds in the field</p>
+        <p class="now-title">Innovative finance for culture</p>
+        <p class="now-note">
+          The <strong>Feyha Çelenk Theatre Entrepreneurship Support Program</strong> in Bursa —
+          a funding model for independent performing arts productions, built with BKSTV and Alethina Impact.
+          And the <strong>Bozcaada Viticulture Fund</strong>, applying the same thinking to a
+          4,000-year-old heritage on the island. More on the way.
+        </p>
+      </li>
+
+      <li class="fade">
+        <p class="now-status">10th edition · 2026</p>
+        <p class="now-title">Bozcaada Jazz Festival &amp; KEŞİF</p>
+        <p class="now-note">
+          Three stages, 50+ music happenings, and pop-up concerts across the island.
+          In 2023 we ran the first festival impact measurement of its kind in Türkiye;
+          the second chapter is underway.
+        </p>
+        <p class="now-note" style="margin-top:12px;">
+          <strong>KEŞİF</strong> is the gathering format we created around it — for the conversations
+          the music alone can't hold. Recent tables have brought together UN Women, Google Türkiye,
+          the Turkish Entrepreneurship Foundation, impact investors, and the island's own producers.
+        </p>
+      </li>
+
+    </ul>
+  </section>
 
 
   <!-- ABOUT -->
@@ -274,16 +424,28 @@
     </p>
     <br>
     <p class="about-text fade">
-      What LinkedIn doesn't quite capture: most of what I've built didn't exist before I showed up.
       Festivals, companies, labels, funds. Some thrived. Some were wound down with care.
       All of them were worth doing.
     </p>
     <br>
     <p class="about-text fade">
-      I'm based in Berlin. Through <em>3dots</em>, I work as a venture builder and ecosystem connector
-      in the creative and cultural industries — bringing together founders, resources, and financial instruments
-      for people solving real problems in culture.
+      I'm based in Berlin and work across Istanbul and Bozcaada. Through <em>3dots</em>, my work now sits
+      where policy, ecosystem building and innovative finance meet — designing the conditions
+      for culture to be properly funded, rather than perpetually rescued.
     </p>
+
+    <div class="personal fade">
+      <p class="personal-label">Away from the desk</p>
+      <p>
+        Black and white analog photography, whenever I find the time — two decades of it now,
+        and I still feel like an amateur. I don't know much about it. I just like doing it.
+      </p>
+      <p>
+        An adventure bike, and a trip somewhere with the same friend every year.
+        Collecting sounds, and making music that mostly never gets released.
+        And a standing wish for more time at sea, with a boat.
+      </p>
+    </div>
   </section>
 
 
@@ -296,50 +458,61 @@
       <li class="fade">
         <p class="timeline-year">Since 2018</p>
         <p class="timeline-title">3dots</p>
-        <p class="timeline-role">Co-Founder · Venture Builder · Ecosystem Builder</p>
+        <p class="timeline-role">Co-Founder</p>
         <p class="timeline-note">
           3dots is the long-running vehicle through which I've co-founded and supported multiple projects
           at the intersection of culture, impact and entrepreneurship. What started as a project company
-          has evolved into an ecosystem builder — connecting founders, resources, and financial instruments
+          has become an ecosystem builder — connecting founders, resources, and financial instruments
           across the creative and cultural industries.
         </p>
         <p class="timeline-note">
           Projects launched or co-founded through 3dots:
         </p>
         <p class="timeline-note">
-          <strong style="color:var(--ink);font-weight:400;">Bozcaada Jazz Festival</strong> — reaching its 10th edition in 2026.<br><br>
-          <strong style="color:var(--ink);font-weight:400;">XJAZZ Istanbul, Ankara, İzmir</strong> — regional expansions of the XJAZZ concept.<br><br>
-          <strong style="color:var(--ink);font-weight:400;">Bergama Theatre Festival</strong> — exited in 2025, with deep pride in what it became. Still a fan and a curator of the Akropol events in its closing chapter.<br><br>
-          <strong style="color:var(--ink);font-weight:400;">Space Goats (label)</strong> — launched and wound down. Couldn't find its footing.<br><br>
-          <strong style="color:var(--ink);font-weight:400;">Lycia Records</strong> — ongoing.<br><br>
-          <strong style="color:var(--ink);font-weight:400;">Kabak & Lin Records</strong> — formed from a merger with Lin Records; exited.<br><br>
-          <strong style="color:var(--ink);font-weight:400;">Erişilebilir Her Şey</strong> — an accessibility consultancy co-founded to help cultural operators adopt accessibility principles. Exited after formation due to structural changes. Still a big fan watching it from the outside grow.
+          <strong>Bozcaada Jazz Festival</strong> — reaching its 10th edition in 2026.<br><br>
+          <strong>XJAZZ Istanbul, Ankara, İzmir</strong> — regional expansions of the XJAZZ concept.<br><br>
+          <strong>Bergama Theatre Festival</strong> — built and exited in 2025, with deep pride in what it became. Still a fan, and a curator of the Akropol events in its closing chapter.<br><br>
+          <strong>Space Goats (label)</strong> — launched and wound down. Couldn't find its footing.<br><br>
+          <strong>Lycia Records</strong> — ongoing.<br><br>
+          <strong>Kabak &amp; Lin Records</strong> — formed from a merger with Lin Records; exited.<br><br>
+          <strong>Erişilebilir Her Şey</strong> — an accessibility consultancy co-founded to help cultural operators adopt accessibility principles. Exited after formation due to structural changes. Still a big fan, watching it grow from the outside.
         </p>
+      </li>
+
+      <li class="fade">
+        <p class="timeline-year">Since 2021</p>
+        <p class="timeline-title">
+          <a href="https://turkiyecazagi.com" target="_blank" rel="noopener"
+             style="text-decoration:none;border-bottom:1px solid var(--rule);">Türkiye Caz Ağı</a>
+        </p>
+        <p class="timeline-role">Founder · Türkiye Jazz Network</p>
         <p class="timeline-note">
-          3dots currently runs accelerators and funds, acts as a venture builder,
-          and raises financial instruments for creative and cultural industry founders.
+          Founded on the model of Europe Jazz Network, to connect the country's festivals, venues
+          and institutions into something that could act together rather than separately.
+          Members include Istanbul Jazz Festival, Akbank Jazz Festival, Babylon,
+          Borusan Müzik Evi and Arter.
         </p>
       </li>
 
       <li class="fade">
         <p class="timeline-year">2021 – 2024</p>
         <p class="timeline-title">Deplike</p>
-        <p class="timeline-role">Co-Founder · Music Tech · London & Ankara</p>
+        <p class="timeline-role">Co-Founder · Music Tech · London &amp; Ankara</p>
         <p class="timeline-note">
           My first real step into tech — something I'd wanted for a long time.
-          Deplike is a music technology company. I came in as co-founder, raised seed investment,
-          and oversaw global partnerships. Left in 2024 to focus on what was building at 3dots.
+          Deplike is a music technology company. I came in as co-founder, raised seed investment
+          during an economic crisis, and oversaw global partnerships. Left in 2024 to focus on
+          what was building at 3dots.
         </p>
         <p class="timeline-note">
           Crossing from cultural production into a tech startup was a significant shift.
-          <!-- Add your own reflection on what you learned, what surprised you, and what carried over. -->
         </p>
       </li>
 
       <li class="fade">
         <p class="timeline-year">2018 – 2021</p>
         <p class="timeline-title">XJAZZ Berlin</p>
-        <p class="timeline-role">Co-Founder & Co-CEO · Still a Shareholder</p>
+        <p class="timeline-role">Co-Founder &amp; Co-CEO · Still a Shareholder</p>
         <p class="timeline-note">
           Co-founded and co-ran XJAZZ out of Berlin, building it into an international festival format.
           Editions ran in Türkiye, Belarus, and Sweden (the latter cancelled due to COVID),
@@ -353,18 +526,17 @@
       <li class="fade">
         <p class="timeline-year">2015 – 2017</p>
         <p class="timeline-title">Sónar Istanbul</p>
-        <p class="timeline-role">Initiator & Deal Maker · Barcelona Franchise · Istanbul</p>
+        <p class="timeline-role">Initiator &amp; Deal Maker · Barcelona Franchise · Istanbul</p>
         <p class="timeline-note">
-          The deal-making process for Sónar Istanbul began around 2015, while I was still working
-          part-time at Charmenko — and after two years of groundwork, the deal was closed and
-          delivered in 2017. Bringing the iconic Barcelona festival franchise to Türkiye for the
-          first time was one of those milestones that required a specific combination of
-          relationships, persistence, and timing to pull off.
+          It started as a question from my sister, Funda — <em>Murat, have you heard of Sónar Barcelona?</em>
+          Two years of groundwork later, while I was still working part-time at Charmenko,
+          the deal was closed and delivered in 2017. Bringing the iconic Barcelona franchise
+          to Türkiye for the first time required a specific combination of relationships,
+          persistence, and timing.
         </p>
         <p class="timeline-note">
           The festival has continued running in Istanbul since. I'm no longer involved,
           but proud to have been the one who made it happen.
-          <!-- Add your own account of how this came together if you'd like. -->
         </p>
       </li>
 
@@ -374,14 +546,13 @@
         <p class="timeline-note">
           A deliberate shift. Berlin in 2015 was one of the world's most important cities for music,
           independent culture, and the kind of creative economy I wanted to build in.
-          <!-- Add what drew you here — and what you found. -->
         </p>
       </li>
 
       <li class="fade">
         <p class="timeline-year">2010 – 2014</p>
         <p class="timeline-title">Pozitif Live</p>
-        <p class="timeline-role">Projects & Production</p>
+        <p class="timeline-role">Projects &amp; Production</p>
         <p class="timeline-note">
           My relationship with Pozitif stretches back to 2004 and runs through to 2014 —
           a decade in total, though in different capacities. The 2010–2014 period was the
@@ -399,7 +570,7 @@
       <li class="fade">
         <p class="timeline-year">2008 – 2015</p>
         <p class="timeline-title">Charmenko / Charm Music</p>
-        <p class="timeline-role">Türkiye Projects Manager & Artist Booker · Part-time through 2015</p>
+        <p class="timeline-role">Türkiye Projects Manager &amp; Artist Booker · Part-time through 2015</p>
         <p class="timeline-note">
           Moved from the production floor into booking — working across major and emerging acts
           in Türkiye and Eastern European markets. This was where freelance became professional:
@@ -430,28 +601,56 @@
   </section>
 
 
-  <!-- INSIGHTS -->
-  <section id="insights">
-    <p class="section-label fade">Insights</p>
-    <p class="about-text fade" style="font-size: clamp(18px, 2.5vw, 22px);">
-      Things I've come to believe — on topics I've thought about for a long time.
-      On the economics of independent culture, what festival-building teaches you about entrepreneurship,
-      and how the creative industries relate to — and often misunderstand — venture capital.
-    </p>
-    <br>
-    <p class="fade insight-body">
-      More writing coming here. If something in my milestones sparks a question, reach out.
-    </p>
-  </section>
+  <!-- WRITING -->
+  <section id="writing">
+    <p class="section-label fade">Writing</p>
 
+    <p class="writing-intro fade">
+      Notes on the economics of independent culture, what festival-building teaches you about
+      entrepreneurship, and how the creative industries relate to — and often misunderstand — capital.
+    </p>
 
-  <!-- PERSONAL -->
-  <section id="personal">
-    <p class="section-label fade">Personal</p>
-    <div class="placeholder-box fade">
-      This space is for writing — articles, reflections, things worth putting into words.
-      Coming soon.
-    </div>
+    <ul class="writing-list">
+
+      <li class="fade">
+        <div class="writing-item">
+          <p class="writing-name">Culture Finance</p>
+          <p class="writing-desc">On measuring and financing cultural value. Substack.</p>
+        </div>
+      </li>
+
+      <li class="fade">
+        <div class="writing-item">
+          <p class="writing-name">3dots</p>
+          <p class="writing-desc">Field notes from the funds, the festivals, and the ecosystem work. Substack.</p>
+        </div>
+      </li>
+
+      <!--
+        TO MAKE THESE CLICKABLE LATER:
+        swap <div class="writing-item"> for
+        <a class="writing-link" href="PUT-URL-HERE" target="_blank" rel="noopener">
+        and change the closing </div> to </a>.
+
+        Your two Substacks, when you want them:
+        https://culturefinance.substack.com
+        https://3dotsvs.substack.com
+      -->
+
+      <!--
+        TO ADD YOUR OWN NOTES LATER:
+        Copy the block below, paste it above this comment, and fill it in.
+        Point href at a Substack post, or at a page you add to this repo.
+
+      <li class="fade">
+        <a class="writing-link" href="#">
+          <p class="writing-name">Title of the note</p>
+          <p class="writing-desc">One line on what it's about. Month Year.</p>
+        </a>
+      </li>
+      -->
+
+    </ul>
   </section>
 
 
@@ -462,14 +661,18 @@
       If something here resonates — or if you're building something in culture and need a thinking partner — I'm glad to hear it.
     </p>
     <div class="links fade">
-      <a class="link-pill" href="https://linkedin.com/in/muratsezgi" target="_blank">LinkedIn</a>
-      <a class="link-pill" href="https://instagram.com/muratsezgi" target="_blank">Instagram</a>
+      <a class="link-pill" href="mailto:sezgimurat@gmail.com">Email</a>
+      <a class="link-pill" href="https://linkedin.com/in/muratsezgi" target="_blank" rel="noopener">LinkedIn</a>
+      <!-- VERIFY THIS HANDLE BEFORE PUBLISHING -->
+      <a class="link-pill" href="https://x.com/muratsezgi" target="_blank" rel="noopener">X</a>
+      <a class="link-pill" href="https://3dots.ooo" target="_blank" rel="noopener">3dots</a>
+      <a class="link-pill" href="https://instagram.com/muratsezgi" target="_blank" rel="noopener">Instagram</a>
     </div>
   </section>
 
 
   <footer>
-    © <span id="yr"></span> Murat Sezgi
+    © <span id="yr"></span> Murat Sezgi · Berlin · Istanbul · Bozcaada
   </footer>
 
 </div>
